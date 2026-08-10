@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.ArrayList;
 
-public class Recursividade {
+public class Somar {
 
     public static void main(String[] args) {
         ArrayList<Integer> listaSoma = new ArrayList<>();
@@ -16,29 +16,16 @@ public class Recursividade {
         System.out.println(somar(listaSoma));
     }
 
+    static int somar(ArrayList<Integer> listaSoma) {
 
-static int somar(ArrayList<Integer> listaSoma){
 
-
-        if (listaSoma.size() == 1){
+        if (listaSoma.size() == 1) {
             return listaSoma.get(0);
-        }
-
-
-        else {
+        } else {
             int result = listaSoma.get(0);
-           listaSoma.remove(0);
+            listaSoma.remove(0);
             return result + somar(listaSoma);
 
         }
 
-
-
-        }
-
-
-
-    }
-
-
-
+    }}
