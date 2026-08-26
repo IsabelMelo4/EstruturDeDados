@@ -5,42 +5,29 @@ import java.util.ArrayList;
 public class MenorNumero {
 
     public static void main(String[] args) {
-        int posicao;
+        int posicao = 0;
 
         ArrayList<Integer> listNum = new ArrayList<>();
         listNum.add(18);
         listNum.add(1);
         listNum.add(7);
         listNum.add(6);
-        System.out.println(menorValor(listNum));
+
+        System.out.println(menorValor(listNum, posicao));
 
     }
 
-    static int menorValor(ArrayList<Integer> listNum) {
-        int menor = 0;
+    public static int menorValor(ArrayList<Integer> listNum, int pos) {
 
-        if (listNum.size() == 1) {
-            return listNum.get(0);
+        if (pos == listNum.size() - 1) {
+            return listNum.get(pos);
+
+        } else if (listNum.get(pos) < menorValor(listNum, pos + 1)) {
+            return listNum.get(pos);
         }
-            if(menor < listNum.get(0)){
-                menor = listNum.get(0);
-                System.out.println(listNum);
-            }
 
-            listNum.remove(0);
-            menorValor(listNum);
-            return menor;
+        else {
+           return menorValor(listNum, pos+1);
 
-    }
-
-
-
-
-    }
-
-
-
-
-
-
-
+        }
+    }}

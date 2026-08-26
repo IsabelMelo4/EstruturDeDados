@@ -13,24 +13,28 @@ ArrayList<Integer> listaArray = new ArrayList<>();
         listaArray.add(1);
         System.out.println(listaArray);
         selectSort(listaArray);
+        System.out.println(listaArray);
     }
 
     public static void selectSort(ArrayList<Integer> lista){
 
-        for(int i =  1; i > lista.size() -1; i++ ){
+        for(int i =  0; i <= lista.size() -2; i++ ){
             int menor = i;
-            for (int j = i+1; j > lista.size(); j++){
-                if (lista.get(j) < menor){
-                    menor = lista.get(j);
+            for (int j = i+1; j <= lista.size()-1; j++){
+                if (lista.get(j) < lista.get(menor)){
+                    menor = j;
                 }
 
-            int temp = lista.get(i);
-                lista.set(i, menor);
-                lista.set(j, temp);
+                int temp = lista.get(i);
+                lista.set(i, lista.get(menor));
+                lista.set(menor, temp);
             }
+
         }
 
-        System.out.println(lista);
+     //   System.out.println(lista);
 
     }
+
+
 }
