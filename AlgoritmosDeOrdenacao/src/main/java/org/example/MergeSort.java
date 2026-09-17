@@ -18,9 +18,10 @@ public class MergeSort {
         listaMerge.add(12);
         listaMerge.add(6);
 
-        System.out.println(listaMerge);
-
+       System.out.println(listaMerge);
         System.out.println(mergeSort(listaMerge));
+        System.out.println(maiorNumero(mergeSort(listaMerge)));
+
 
     }
 
@@ -44,8 +45,8 @@ public class MergeSort {
             l1 =  mergeSort(l1);
             l2 =  mergeSort(l2);
 
-        System.out.println(l1);
-        System.out.println(l2);
+        //System.out.println(l1);
+       // System.out.println(l2);
          return mesclar(l1,l2);
     }
 
@@ -78,5 +79,18 @@ public class MergeSort {
         }
             return listaC;
     }
+
+    public static ArrayList<Integer> maiorNumero(ArrayList<Integer> lista){
+                ArrayList<Integer> listaMaior = new ArrayList<>();
+                mergeSort(lista);
+                for(int i = lista.get(lista.size()-1); listaMaior.size() < 2; i++){
+                    mergeSort(lista);
+                    listaMaior.add(lista.get(lista.size()-1));
+                    lista.remove(lista.size()-1);
+                }
+                System.out.println(listaMaior);
+                return listaMaior;
+    }
+
 
 }
