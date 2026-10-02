@@ -1,18 +1,17 @@
-import java.sql.ClientInfoStatus;
-import java.util.ArrayList;
+package Hash;
 
-public class MinhaLista {
+public class ListaDuplaEncadeada {
 
     Nodo inicio;
     public int tamanho;
 
-    public MinhaLista() {
+    public ListaDuplaEncadeada( ) {
         this.inicio = null;
         this.tamanho = 0;
 
     }
 
-    public void adicionarLast(int num) {
+    public void adicionarLast(Par num) {
         if (inicio == null) {
             inicio = new Nodo(num);
 
@@ -28,13 +27,13 @@ public class MinhaLista {
         this.tamanho++;
     }
 
-    public boolean adicionarPos(int posicao, int valor) {
+    public boolean adicionarPos(int posicao, Par par) {
 
         if (posicao < -1 || posicao > tamanho) {
             return false;
         }
 
-        Nodo novo = new Nodo(valor);
+        Nodo novo = new Nodo(par);
         if(posicao == 0){
             novo.setProximo(inicio);
            inicio = novo;
@@ -53,51 +52,40 @@ public class MinhaLista {
             }
 
         return true;
-
-
     }
 
-    public boolean remove(int index){
+    public boolean remove(int index) {
 
-        if (inicio == null){
+        if (inicio == null || index < 0 || index >= tamanho) {
             return false;
         }
-
-        else {
-            for(int i = 0; i< tamanho; i++){
-                if (i == index){
-                  tamanho --;
-
-                }
-            }
-
+        if (index == 0) {
+            inicio = inicio.getProximo();
+            tamanho--;
             return true;
         }
 
+        Nodo atual = inicio;
 
+        for (int i = 0; i < index - 1; i++) {
+            atual = atual.getProximo();
+        }
+
+        atual.setProximo(atual.getProximo().getProximo());
+
+        tamanho--;
+
+        return true;
     }
+    public void getElements() {
 
-
-    public void getElement(int posicao){
         Nodo elementoNodo = inicio;
-        if (posicao < 0 || posicao > tamanho){
-            throw new IndexOutOfBoundsException("A posição é inválida");
+
+        while (elementoNodo != null) {
+            System.out.println(elementoNodo.getPar().getMatricula());
+            System.out.println(elementoNodo.getPar().getNome());
+            elementoNodo = elementoNodo.getProximo();
         }
-
-        for(int i = 0; i < tamanho; i++){
-            if(posicao == i){
-                System.out.println(elementoNodo.getValor());
-            }
-            else if (elementoNodo.getProximo() == null){
-                throw new NullPointerException(" elemento null");
-            }
-            else {
-                elementoNodo = elementoNodo.getProximo();
-            }
-
-        }
-
-
     }
     public int tamanho() {
         return tamanho;
